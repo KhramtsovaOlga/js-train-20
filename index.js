@@ -67,7 +67,7 @@ Car.prototype.accelerate = function (speed) {
 };
 // Метод brake для гальмування прототипу Car,зменшує this.speed на передане число та виводить рядок в консоль в консоль: Автомобіль <brand> <model> зменшив до швидкості <speed> км/год
 
-Car.prototype.break = function () {
+Car.prototype.break = function (speed) {
   this.speed -= speed;
   console.log(
     `Автомобіль ${this.brand} ${this.model} зменшив до швидкості ${this.speed} км/год`
@@ -100,6 +100,8 @@ console.log(car.valueOf());
 car.accelerate(50);
 
 // Використовуємо методи для гальмування та передаємо 20
+
+car.brake(20);
 
 /*
  * Функція конструктор Truck
@@ -198,7 +200,7 @@ truck.tow(11000);
 // Додаємо метод drive для прототипу Car, який збільшує kilometers на передане число, та виводить Подорожуємо <kilometers> кілометрів у <brand> <model>.
 
 Car.prototype.drive = function (kilometers) {
-  this.kilometers += kilometers;
+  this.mileage += kilometers;
   console.log(
     `Подорожуємо ${this.kilometers} кілометрів у ${this.brand} ${this.model}`
   );
@@ -224,7 +226,7 @@ driveCar(100);
 
 function ElectricCar(brand, model, year, mileage, batteryCapacity) {
   // Перевіряємо, чи функцію було викликано з new, якщо ні виволимо помилку "Конструктор має бути викликаний з 'new'"
-  if (!this instanceof ElectricCar) {
+  if (!new.target) {
     throw new Error("Конструктор має бути викликаний з 'new'");
   }
   // Викликаємо Car.call та передаємо в нього this, brand, model, year, mileage
@@ -235,7 +237,7 @@ function ElectricCar(brand, model, year, mileage, batteryCapacity) {
 
 // Перевизначаємо toString для прототипу ElectricCar він має повертати <brand> <model> <year> - Батарея: <batteryCapacity> kWh
 ElectricCar.prorotype.toString = function () {
-  return `${this.brand} ${this.model} ${this.year} - Батарея: ${this.batteryCapacity} kWh`;
+  return `${this.brand} ${this.model} (${this.year}) - Батарея: ${this.batteryCapacity} kWh`;
 };
 
 // Створюємо новий екземпляр ElectricCar
