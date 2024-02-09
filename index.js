@@ -101,7 +101,7 @@ car.accelerate(50);
 
 // Використовуємо методи для гальмування та передаємо 20
 
-car.brake(20);
+car.break(20);
 
 /*
  * Функція конструктор Truck
@@ -235,9 +235,9 @@ function ElectricCar(brand, model, year, mileage, batteryCapacity) {
   this.batteryCapacity = batteryCapacity;
 }
 
-// Перевизначаємо toString для прототипу ElectricCar він має повертати <brand> <model> <year> - Батарея: <batteryCapacity> kWh
-ElectricCar.prorotype.toString = function () {
-  return `${this.brand} ${this.model} (${this.year}) - Батарея: ${this.batteryCapacity} kWh`;
+// Перевизначаємо toString для прототипу ElectricCar він має повертати brand model year - Батарея: batteryCapacity kWh
+ElectricCar.prototype.toString = function () {
+  return `${this.brand} ${this.model} (${this.year}) - Батарея: ${this.batteryCapacity}kWh`;
 };
 
 // Створюємо новий екземпляр ElectricCar
